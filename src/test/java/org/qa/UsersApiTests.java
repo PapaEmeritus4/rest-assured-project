@@ -2,7 +2,7 @@ package org.qa;
 
 import io.restassured.http.ContentType;
 import org.qa.utils.pojo.User;
-import org.qa.utils.UsersEndPoints;
+import org.qa.utils.UrlAndEndPoints;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
@@ -16,11 +16,11 @@ public class UsersApiTests {
         User user = new User("Volodymyr", "Java Developer");
 
         given()
-                .baseUri(UsersEndPoints.BASE_URL)
+                .baseUri(UrlAndEndPoints.BASE_URL)
                 .contentType(ContentType.JSON)
                 .body(user)
                 .when()
-                .post(UsersEndPoints.CREATE_USER)
+                .post(UrlAndEndPoints.CREATE_USER)
                 .then()
                 .statusCode(201)
                 .body("name", equalTo("Volodymyr"))
@@ -31,9 +31,9 @@ public class UsersApiTests {
     @Test(testName = "Test get user functionality")
     public void givenUser_whenGetUser_thenSuccessfulResponse() {
         given()
-                .baseUri(UsersEndPoints.BASE_URL)
+                .baseUri(UrlAndEndPoints.BASE_URL)
                 .contentType(ContentType.JSON)
-                .get(UsersEndPoints.GET_USER)
+                .get(UrlAndEndPoints.GET_USER)
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("json-schema/get_user_json_schema.json"));
@@ -42,9 +42,9 @@ public class UsersApiTests {
     @Test(testName = "Test get user not found functionality")
     public void givenUser_whenGetUser_thenNotFoundResponse() {
         given()
-                .baseUri(UsersEndPoints.BASE_URL)
+                .baseUri(UrlAndEndPoints.BASE_URL)
                 .contentType(ContentType.JSON)
-                .get(UsersEndPoints.GET_NOT_FOUND_USER)
+                .get(UrlAndEndPoints.GET_NOT_FOUND_USER)
                 .then()
                 .statusCode(404);
     }
@@ -52,9 +52,9 @@ public class UsersApiTests {
     @Test(testName = "Test get users functionality")
     public void givenUsers_whenGetUsers_thenSuccessfulResponse() {
         given()
-                .baseUri(UsersEndPoints.BASE_URL)
+                .baseUri(UrlAndEndPoints.BASE_URL)
                 .contentType(ContentType.JSON)
-                .get(UsersEndPoints.GET_USERS)
+                .get(UrlAndEndPoints.GET_USERS)
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("json-schema/get_users_json_schema.json"));
@@ -63,9 +63,9 @@ public class UsersApiTests {
     @Test(testName = "Test delete user functionality")
     public void givenUserToDelete_whenDeleteUser_thenSuccessfulResponse() {
         given()
-                .baseUri(UsersEndPoints.BASE_URL)
+                .baseUri(UrlAndEndPoints.BASE_URL)
                 .contentType(ContentType.JSON)
-                .delete(UsersEndPoints.DELETE_USER)
+                .delete(UrlAndEndPoints.DELETE_USER)
                 .then()
                 .statusCode(204);
     }
@@ -73,11 +73,11 @@ public class UsersApiTests {
     @Test(testName = "Test update user functionality")
     public void givenUserToUpdate_whenUpdateUser_thenSuccessfulResponse() {
         given()
-                .baseUri(UsersEndPoints.BASE_URL)
+                .baseUri(UrlAndEndPoints.BASE_URL)
                 .contentType(ContentType.JSON)
                 .body(new User("Volodymyr", "Java QA"))
                 .when()
-                .put(UsersEndPoints.UPDATE_USER)
+                .put(UrlAndEndPoints.UPDATE_USER)
                 .then()
                 .statusCode(200)
                 .body("name", equalTo("Volodymyr"))

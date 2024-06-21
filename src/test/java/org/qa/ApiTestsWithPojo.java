@@ -1,28 +1,26 @@
 package org.qa;
 
-import org.qa.utils.pojo.User;
 import org.qa.utils.Specifications;
-import org.qa.utils.UsersEndPoints;
+import org.qa.utils.UrlAndEndPoints;
 import org.qa.utils.pojo.*;
 import org.testng.annotations.Test;
 
-import java.time.Clock;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.*;
 
-public class ApiTests {
+public class ApiTestsWithPojo {
 
     @Test
     public void given_whenGetUsers_thenAvatarContainsIdAndAllEmailsEndWith() {
         Specifications.installSpecification(
-                Specifications.requestSpecification(UsersEndPoints.BASE_URL),
+                Specifications.requestSpecification(UrlAndEndPoints.BASE_URL),
                 Specifications.responseSpecificationStatusOk200()
         );
         List<UserData> users = given()
                 .when()
-                .get(UsersEndPoints.GET_USERS)
+                .get(UrlAndEndPoints.GET_USERS)
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
         users.forEach(user -> {
@@ -34,7 +32,7 @@ public class ApiTests {
     @Test
     public void givenUser_whenRegisterUser_thenSuccessfulResponse() {
         Specifications.installSpecification(
-                Specifications.requestSpecification(UsersEndPoints.BASE_URL),
+                Specifications.requestSpecification(UrlAndEndPoints.BASE_URL),
                 Specifications.responseSpecificationStatusOk200()
         );
         Integer expectedId = 4;
@@ -43,7 +41,7 @@ public class ApiTests {
         RegisterResponse response = given()
                 .body(user)
                 .when()
-                .post(UsersEndPoints.REGISTER_USER)
+                .post(UrlAndEndPoints.REGISTER_USER)
                 .then().log().all()
                 .extract().as(RegisterResponse.class);
 
@@ -55,12 +53,12 @@ public class ApiTests {
     @Test
     public void givenUser_whenRegisterUser_thenBadRequestResponse() {
         Specifications.installSpecification(
-                Specifications.requestSpecification(UsersEndPoints.BASE_URL),
+                Specifications.requestSpecification(UrlAndEndPoints.BASE_URL),
                 Specifications.responseSpecificationStatusBadRequest400()
         );
         BadRequestResponse response = given()
                 .when()
-                .post(UsersEndPoints.REGISTER_USER)
+                .post(UrlAndEndPoints.REGISTER_USER)
                 .then().log().all()
                 .extract().as(BadRequestResponse.class);
 
@@ -70,12 +68,12 @@ public class ApiTests {
     @Test
     public void given_whenGetResources_thenResourcesSortedByYear() {
         Specifications.installSpecification(
-                Specifications.requestSpecification(UsersEndPoints.BASE_URL),
+                Specifications.requestSpecification(UrlAndEndPoints.BASE_URL),
                 Specifications.responseSpecificationStatusOk200()
         );
         List<ResourceData> resources= given()
                 .when()
-                .get(UsersEndPoints.GET_RESOURCES)
+                .get(UrlAndEndPoints.GET_RESOURCES)
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", ResourceData.class);
         List<Integer> years = resources.stream().map(ResourceData::getYear).toList();
@@ -86,23 +84,12 @@ public class ApiTests {
     @Test
     public void given_whenDeleteUser_thenSuccessfulResponse204() {
         Specifications.installSpecification(
-                Specifications.requestSpecification(UsersEndPoints.BASE_URL),
+                Specifications.requestSpecification(UrlAndEndPoints.BASE_URL),
                 Specifications.responseSpecificationStatusNoContent204()
         );
         given()
                 .when()
-                .delete(UsersEndPoints.DELETE_USER)
+                .delete(UrlAndEndPoints.DELETE_USER)
                 .then().log().all();
     }
 }
-
-
-
-
-
-
-
-
-
-
-

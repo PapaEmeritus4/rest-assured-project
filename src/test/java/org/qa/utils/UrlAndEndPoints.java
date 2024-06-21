@@ -1,6 +1,6 @@
 package org.qa.utils;
 
-public final class UsersEndPoints {
+public final class UrlAndEndPoints {
 
     public static final String BASE_URL = "https://reqres.in/api/";
     public static final String CREATE_USER = "users";
