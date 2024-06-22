@@ -1,4 +1,4 @@
-package org.qa;
+package org.qa.reqres;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;

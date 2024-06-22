@@ -1,4 +1,4 @@
-package org.qa.kucoin;
+package org.qa.utils.pojo.kucoin;
 
 public class TickerData {
 

@@ -1,8 +1,8 @@
-package org.qa;
+package org.qa.reqres;
 
 import org.qa.utils.Specifications;
 import org.qa.utils.UrlAndEndPoints;
-import org.qa.utils.pojo.*;
+import org.qa.utils.pojo.reqres.*;
 import org.testng.annotations.Test;
 
 import java.util.List;

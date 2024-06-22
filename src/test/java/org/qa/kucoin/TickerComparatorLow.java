@@ -1,5 +1,7 @@
 package org.qa.kucoin;
 
+import org.qa.utils.pojo.kucoin.TickerData;
+
 import java.util.Comparator;
 
 public class TickerComparatorLow implements Comparator<TickerData> {

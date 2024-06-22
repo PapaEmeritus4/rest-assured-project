@@ -2,6 +2,7 @@ package org.qa.kucoin;
 
 import org.qa.utils.KucoinUrlAndEndPoints;
 import org.qa.utils.Specifications;
+import org.qa.utils.pojo.kucoin.TickerData;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;

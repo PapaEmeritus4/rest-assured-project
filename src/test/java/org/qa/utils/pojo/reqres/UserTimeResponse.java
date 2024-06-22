@@ -1,4 +1,4 @@
-package org.qa.utils.pojo;
+package org.qa.utils.pojo.reqres;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

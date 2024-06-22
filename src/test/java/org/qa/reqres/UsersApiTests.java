@@ -1,7 +1,7 @@
-package org.qa;
+package org.qa.reqres;
 
 import io.restassured.http.ContentType;
-import org.qa.utils.pojo.User;
+import org.qa.utils.pojo.reqres.User;
 import org.qa.utils.UrlAndEndPoints;
 import org.testng.annotations.Test;
 

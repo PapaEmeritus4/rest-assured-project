@@ -1,14 +1,14 @@
-package org.qa.utils.pojo;
+package org.qa.utils.pojo.reqres;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+@Getter
+public class User {
 
-    private String email;
-    private String password;
+    private String name;
+    private String job;
 }
