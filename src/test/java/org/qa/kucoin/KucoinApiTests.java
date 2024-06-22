@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
-public class StreamApiTests {
+public class KucoinApiTests {
 
     public List<TickerData> getTickers() {
         return given()
